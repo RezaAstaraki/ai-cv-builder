@@ -15,16 +15,9 @@ import { Button } from "../ui/button";
 import PersonalDetail from "../form components/PersonalDetail";
 import Summery from "../form components/Summery";
 
-const FormSection = () => {
-  const { resumeId } = useParams<{ resumeId: string }>();
-  const s = String(Math.random());
-
-  useEffect(() => {
-    const getInitialData = async () => {
-      const { data } = await getResume(resumeId);
-      return data;
-    };
-  }, []);
+const FormSection = ({ resumeInfo }: any) => {
+  const resumeinfo = resumeInfo.data;
+  console.log(resumeinfo);
 
   const [formIndex, setFormIndex] = useState(0);
   return (

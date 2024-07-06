@@ -1,7 +1,7 @@
 import React from "react";
-import { auth, currentUser } from "@clerk/nextjs/server";
 import FormSection from "@/components/custom components/FormSection";
 import ResumePreview from "@/components/custom components/ResumePreview";
+import { getResume } from "@/service/strapiCms/serverActions";
 
 const EditResume = async ({
   params,
@@ -10,11 +10,13 @@ const EditResume = async ({
   params: { resumeId: string };
   searchParams: any;
 }) => {
-  // const { resumeId, title } = searchParams;
+  const resumeIfo = await getResume(params.resumeId);
+  console.log(resumeIfo);
+
   return (
     // <ContextProvider value={{ dd: "sssss" }}>
     <div className="grid grid-cols-1 md:grid-cols-2 p-10 gap-10">
-      <FormSection />
+      <FormSection resumeInfo={resumeIfo} />
       <ResumePreview />
     </div>
     // </ContextProvider>
