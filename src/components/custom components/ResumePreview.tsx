@@ -1,6 +1,8 @@
 "use client";
 
+import ExperiencePreview from "../preview/ExperiencePreview";
 import PersonalDetailPreview from "../preview/PersonalDetailPreview";
+import SummeryPreview from "../preview/SummeryPreview";
 
 // import React, { useContext } from "react";
 
@@ -11,11 +13,11 @@ const ResumePreview = ({}: {}) => {
   return (
     <div className="shadow-lg h-full p-14 border-t-[20px]">
       {/* Personal Detail  */}
-      <PersonalDetailPreview resumeInfo={"resumeInfo"} />
+      <PersonalDetailPreview />
       {/* Summery  */}
-      {/* <SummeryPreview /> */}
+      <SummeryPreview />
       {/* Professional Experience  */}
-      {/* {resumeInfo?.Experience?.length>0&& <ExperiencePreview resumeInfo={resumeInfo} />} */}
+      <ExperiencePreview />
       {/* Educational  */}
       {/* {resumeInfo?.education?.length>0&&   <EducationalPreview resumeInfo={resumeInfo} />} */}
       {/* Skills  */}

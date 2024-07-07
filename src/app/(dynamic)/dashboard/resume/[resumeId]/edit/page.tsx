@@ -11,7 +11,7 @@ const EditResume = async ({
   searchParams: any;
 }) => {
   const resumeIfo = await getResume(params.resumeId);
-  console.log(resumeIfo);
+  // console.log(resumeIfo);
 
   return (
     // <ContextProvider value={{ dd: "sssss" }}>

@@ -3,7 +3,7 @@
 import { useAppSelector } from "@/redux/store";
 import { useSelector } from "react-redux";
 
-function PersonalDetailPreview({ resumeInfo }: { resumeInfo: any }) {
+function PersonalDetailPreview() {
   const personalInfo = useAppSelector((state) => state.resume.personalInfo);
   return (
     <div>

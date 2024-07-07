@@ -87,6 +87,7 @@ export const savePersonalInfo = async (id: string, body: FormData | string) => {
       ? body
       : JSON.stringify({ data: Object.fromEntries(body.entries()) });
   // revalidateTag("savePersonalInfo");
+  console.log(sendingBody);
   const res = await put(endpoint, sendingBody);
 };
 

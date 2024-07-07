@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import {
   Popover,
   PopoverContent,
@@ -6,12 +6,17 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { LayoutGrid } from "lucide-react";
+import { useParams } from "next/navigation";
+import { useAppDispatch } from "@/redux/store";
+import { setThemeColor } from "@/redux/features/resume/personaInfoSlice";
 // import { ResumeInfoContext } from '@/context/ResumeInfoContext'
 // import GlobalApi from './../../../../service/GlobalApi'
 // import { useParams } from 'react-router-dom'
 // import { toast } from 'sonner'
 
 function ThemeColor() {
+  const param = useParams<{ resumeId: string }>();
+  const dispatch = useAppDispatch();
   const colors = [
     "#FF5733",
     "#33FF57",
@@ -35,7 +40,6 @@ function ThemeColor() {
     "#335AFF",
   ];
 
-  // const {resumeInfo,setResumeInfo}=useContext(ResumeInfoContext);
   const [selectedColor, setSelectedColor] = useState();
   // const {resumeId}=useParams();
   // const onColorSelect=(color)=>{
@@ -68,6 +72,7 @@ function ThemeColor() {
         <div className="grid grid-cols-5 gap-3">
           {colors.map((item, index) => (
             <div
+              onClick={() => dispatch(setThemeColor(item))}
               key={index}
               // onClick={()=>onColorSelect(item)}
               className={`h-5 w-5 rounded-full cursor-pointer

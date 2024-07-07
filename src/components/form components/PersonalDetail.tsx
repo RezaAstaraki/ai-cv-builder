@@ -36,14 +36,17 @@ function PersonalDetail({}) {
     // console.log("---", resumeInfo);
   }, []);
 
-  const submitPersonalInfo = (e: FormEvent<HTMLFormElement>) => {
+  const submitPersonalInfo = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoading(true);
     const formData = new FormData(e.currentTarget);
+    if (personalInfo.themeColor !== "") {
+      formData.append("themeColor", String(personalInfo?.themeColor));
+    }
     // formData.append("themeColor", "#333333");
     const data = { data: formData };
-    const response = savePersonalInfo(param.resumeId, formData);
+    const response = await savePersonalInfo(param.resumeId, formData);
     setLoading(false);
   };
 
@@ -52,7 +55,7 @@ function PersonalDetail({}) {
       <h2 className="font-bold text-lg">Personal Detail</h2>
       <p>Get Started with the basic information</p>
 
-      <form onSubmit={(e) => submitPersonalInfo(e)}>
+      <form onSubmit={async (e) => await submitPersonalInfo(e)}>
         <div className="grid grid-cols-2 mt-5 gap-3">
           <div>
             <label className="text-sm">First Name</label>

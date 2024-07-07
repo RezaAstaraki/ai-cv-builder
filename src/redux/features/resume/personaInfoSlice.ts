@@ -8,7 +8,7 @@ const initialState: PersonalInfoType = {
   address: "",
   phone: "",
   email: "",
-  // themeColor: "#33333",
+  themeColor: "",
 };
 
 export const personalInfoSlice = createSlice({
@@ -60,6 +60,9 @@ export const personalInfoSlice = createSlice({
     setSummary: (state, action) => {
       state.summery = action.payload;
     },
+    setThemeColor: (state, action) => {
+      state.themeColor = action.payload;
+    },
   },
 });
 
@@ -72,5 +75,6 @@ export const {
   setPhoneNo,
   setEmail,
   setSummary,
+  setThemeColor,
 } = personalInfoSlice.actions;
 export default personalInfoSlice.reducer;

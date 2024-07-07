@@ -1,7 +1,6 @@
 "use client";
 
-import { RootState, useAppSelector } from "@/app/redux/store";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/redux/store";
 
 function SummeryPreview({}) {
   const personalInfo = useAppSelector((state) => state.resume.personalInfo);

@@ -14,6 +14,7 @@ import ThemeColor from "./ThemeColor";
 import { Button } from "../ui/button";
 import PersonalDetail from "../form components/PersonalDetail";
 import Summery from "../form components/Summery";
+import Experience from "../form components/Experience";
 
 const FormSection = ({ resumeInfo }: any) => {
   const resumeinfo = resumeInfo.data;
@@ -29,7 +30,7 @@ const FormSection = ({ resumeInfo }: any) => {
             <Link
               href={`/dashboard`}
               onClick={() => {
-                console.log("first");
+                console.log("home hit");
                 // revalidateDashboard();
                 // dummy();
               }}
@@ -65,6 +66,7 @@ const FormSection = ({ resumeInfo }: any) => {
         </div>
         {formIndex === 0 && <PersonalDetail />}
         {formIndex === 1 && <Summery />}
+        {formIndex === 2 && <Experience />}
       </div>
     </div>
   );
