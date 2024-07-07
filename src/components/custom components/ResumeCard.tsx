@@ -22,7 +22,8 @@ import { useSearchParams } from "next/navigation";
 import { AlertDialogFooter, AlertDialogHeader } from "../ui/alert-dialog";
 
 const ResumeCard = ({ resume }: { resume: any }) => {
-  // console.log("resume as param = ", resume);
+  console.log("resume as param = ", resume);
+  console.log("resume as param = ", resume.attributes.title);
   return (
     <>
       <div
@@ -39,12 +40,12 @@ const ResumeCard = ({ resume }: { resume: any }) => {
         </div>
       </div>
       <div
-        className="border p-3 flex justify-between  text-white rounded-b-lg shadow-lg"
+        className="border p-3 flex justify-between  text-black rounded-b-lg shadow-lg"
         //  style={{
         //   background:resume?.themeColor
         // }}
       >
-        <h2 className="text-sm">{resume.title}</h2>
+        <h2 className="text-sm">{resume.attributes.title}</h2>
 
         <DropdownMenu>
           <DropdownMenuTrigger>

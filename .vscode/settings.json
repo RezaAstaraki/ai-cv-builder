@@ -6,6 +6,7 @@
     "signin",
     "sonner",
     "STAPI",
-    "strapi"
+    "strapi",
+    "uuidv"
   ]
 }

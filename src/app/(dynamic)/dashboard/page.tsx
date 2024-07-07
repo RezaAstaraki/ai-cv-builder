@@ -13,7 +13,7 @@ const DashboardPage = async () => {
   const userEmail = user?.primaryEmailAddress?.emailAddress;
   const { data } = await getUserResumes(userEmail);
 
-  // console.log(data);
+  console.log(data);
 
   return (
     <div className="p-10 md:px-20 lg:px-32">
@@ -25,13 +25,13 @@ const DashboardPage = async () => {
           data.map((resume: any) => {
             return (
               <Link
-                key={resume.documentId}
+                key={resume.id}
                 href={{
-                  pathname: `/dashboard/resume/${resume.documentId}/edit`,
+                  pathname: `/dashboard/resume/${resume.id}/edit`,
                   // query: resume,
                 }}
               >
-                <ResumeCard resume={resume} key={resume.documentId} />
+                <ResumeCard resume={resume} key={resume.id} />
               </Link>
             );
           })}

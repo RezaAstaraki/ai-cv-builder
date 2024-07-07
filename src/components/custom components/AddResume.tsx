@@ -37,7 +37,7 @@ const AddResume = () => {
     const res = await addResume(title, uuid, userEmail, userName);
     setLoading(false);
 
-    router.push(`dashboard/resume/${res.data.documentId}/edit`);
+    router.push(`dashboard/resume/${res.data.id}/edit`);
   };
 
   return (
