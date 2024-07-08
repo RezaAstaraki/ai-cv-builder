@@ -60,7 +60,7 @@ function Education() {
         }),
       },
     });
-    console.log(body);
+    // console.log(body);
     const res = await savePersonalInfo(String(params.resumeId), body);
   };
 

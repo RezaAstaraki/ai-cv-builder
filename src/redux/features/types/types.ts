@@ -9,6 +9,11 @@ export type Experience = {
   currentlyWorking: boolean;
   workSummery: string;
 };
+export type Skill = {
+  id: number;
+  name: string;
+  rating: number;
+};
 
 export type Education = {
   id: number;

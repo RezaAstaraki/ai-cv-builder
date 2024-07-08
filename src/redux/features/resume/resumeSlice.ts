@@ -3,11 +3,13 @@ import personaInfoSliceReducer from "./personaInfoSlice";
 import resumeMetaReducer from "./resumeMetaSlice";
 import experiencesReducer from "./experiencesSlice";
 import educationReducer from "./educationSlice";
+import skillReducer from "./skillSlice";
 import {
   DocumentType,
   Experience,
   PersonalInfoType,
   Education,
+  Skill,
 } from "../types";
 
 export interface ResumeState {
@@ -15,6 +17,7 @@ export interface ResumeState {
   personalInfo: PersonalInfoType;
   experiences: Experience[];
   education: Education[];
+  skill: Skill[];
 }
 
 // Combine reducers with correct types
@@ -23,6 +26,7 @@ const resumeReducer = combineReducers({
   personalInfo: personaInfoSliceReducer,
   experiences: experiencesReducer,
   education: educationReducer,
+  skill: skillReducer,
 });
 
 // Create resume slice
