@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { ArrowLeft, ArrowRight, Home } from "lucide-react";
 import Link from "next/link";
@@ -15,6 +15,7 @@ import { Button } from "../ui/button";
 import PersonalDetail from "../form components/PersonalDetail";
 import Summery from "../form components/Summery";
 import Experience from "../form components/Experience";
+import Education from "../form components/Education";
 
 const FormSection = ({ resumeInfo }: any) => {
   const resumeinfo = resumeInfo.data;
@@ -67,6 +68,7 @@ const FormSection = ({ resumeInfo }: any) => {
         {formIndex === 0 && <PersonalDetail />}
         {formIndex === 1 && <Summery />}
         {formIndex === 2 && <Experience />}
+        {formIndex === 3 && <Education />}
       </div>
     </div>
   );

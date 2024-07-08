@@ -5,8 +5,8 @@ const initialState: Education[] = [
   {
     id: 1,
     universityName: "Western Illinois University",
-    startDate: "Aug 2018",
-    endDate: "Dec 2019",
+    startDate: "2018-07-30",
+    endDate: "2019-11-29",
     degree: "Master",
     major: "Computer Science",
     description:
@@ -15,8 +15,8 @@ const initialState: Education[] = [
   {
     id: 2,
     universityName: "Western Illinois University",
-    startDate: "Aug 2018",
-    endDate: "Dec 2019",
+    startDate: "2018-07-30",
+    endDate: "2019-11-29",
     degree: "Master",
     major: "Computer Science",
     description:
