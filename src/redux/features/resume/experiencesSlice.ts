@@ -4,7 +4,7 @@ import { Experience } from "../types";
 
 const initialState: Experience[] = [
   {
-    id: 1,
+    id: 0,
     title: "Full Stack Developer",
     companyName: "Amazon",
     city: "New York",
@@ -21,7 +21,7 @@ const initialState: Experience[] = [
       "and back-end systems.",
   },
   {
-    id: 2,
+    id: 1,
     title: "Frontend Developer",
     companyName: "Google",
     city: "Charlotte",
@@ -45,87 +45,79 @@ const experiencesSlice = createSlice({
   reducers: {
     seTitle: (
       state,
-      action: PayloadAction<{ id: number; newTitle: string }>
+      action: PayloadAction<{ index: number; newTitle: string }>
     ) => {
-      const { id, newTitle } = action.payload;
-      const experience = state.find((exp) => exp.id === id);
-      if (experience) {
-        experience.title = newTitle;
-      }
+      state[action.payload.index].title = action.payload.newTitle;
+    },
+
+    addExperience: (state) => {
+      const newExp: Experience = {
+        id: 0,
+        title: "",
+        companyName: "",
+        city: "",
+        currentlyWorking: true,
+        state: "",
+        startDate: "",
+        endDate: "",
+        workSummery: "",
+      };
+
+      return [...state, newExp];
+    },
+
+    removeExperience: (state, action: PayloadAction<number>) => {
+      state.splice(action.payload, 1);
     },
 
     seCompanyName: (
       state,
-      action: PayloadAction<{ id: number; companyName: string }>
+      action: PayloadAction<{ index: number; companyName: string }>
     ) => {
-      const { id, companyName } = action.payload;
-      const experience = state.find((exp) => exp.id === id);
-      if (experience) {
-        experience.companyName = companyName;
-      }
+      state[action.payload.index].companyName = action.payload.companyName;
     },
 
-    setCity: (state, action: PayloadAction<{ id: number; city: string }>) => {
-      const { id, city } = action.payload;
-      const experience = state.find((exp) => exp.id === id);
-      if (experience) {
-        experience.city = city;
-      }
+    setCity: (
+      state,
+      action: PayloadAction<{ index: number; city: string }>
+    ) => {
+      state[action.payload.index].city = action.payload.city;
     },
 
     setState_: (
       state,
-      action: PayloadAction<{ id: number; state_: string }>
+      action: PayloadAction<{ index: number; state_: string }>
     ) => {
-      const { id, state_ } = action.payload;
-      const experience = state.find((exp) => exp.id === id);
-      if (experience) {
-        experience.state = state_;
-      }
+      state[action.payload.index].state = action.payload.state_;
     },
 
     setStartDate: (
       state,
-      action: PayloadAction<{ id: number; startDate: string }>
+      action: PayloadAction<{ index: number; startDate: string }>
     ) => {
-      const { id, startDate } = action.payload;
-      const experience = state.find((exp) => exp.id === id);
-      if (experience) {
-        experience.startDate = startDate;
-      }
+      state[action.payload.index].startDate = action.payload.startDate;
     },
 
     setEndDate: (
       state,
-      action: PayloadAction<{ id: number; endDate: string }>
+      action: PayloadAction<{ index: number; endDate: string }>
     ) => {
-      const { id, endDate } = action.payload;
-      const experience = state.find((exp) => exp.id === id);
-      if (experience) {
-        experience.endDate = endDate;
-      }
+      state[action.payload.index].endDate = action.payload.endDate;
     },
 
     setCurrentlyWorking: (
       state,
-      action: PayloadAction<{ id: number; currentlyWorking: boolean }>
+      action: PayloadAction<{ index: number; currentlyWorking: boolean }>
     ) => {
-      const { id, currentlyWorking } = action.payload;
-      const experience = state.find((exp) => exp.id === id);
-      if (experience) {
-        experience.currentlyWorking = currentlyWorking;
-      }
+      state[action.payload.index].currentlyWorking =
+        action.payload.currentlyWorking;
     },
 
     setWorkSummery: (
       state,
-      action: PayloadAction<{ id: number; workSummery: string }>
+      action: PayloadAction<{ index: number; workSummery: string }>
     ) => {
-      const { id, workSummery } = action.payload;
-      const experience = state.find((exp) => exp.id === id);
-      if (experience) {
-        experience.workSummery = workSummery;
-      }
+      state[action.payload.index].workSummery = action.payload.workSummery;
     },
   },
 });
@@ -139,6 +131,8 @@ export const {
   setStartDate,
   setState_,
   setWorkSummery,
+  addExperience,
+  removeExperience,
 } = experiencesSlice.actions;
 
 export default experiencesSlice.reducer;

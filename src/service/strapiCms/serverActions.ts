@@ -120,7 +120,7 @@ export const getUserResumes = async (userEmail?: string) => {
 };
 
 export const getResume = async (documentId: string) => {
-  const endpoint = `user-resumes/${documentId}`;
+  const endpoint = `user-resumes/${documentId}?populate=*`;
   const res = await get(endpoint);
   return res;
 };
