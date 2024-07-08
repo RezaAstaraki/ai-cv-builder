@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import {
   AlertDialog,
@@ -21,7 +21,7 @@ import {
 // import { toast } from "sonner";
 import { LoaderCircle, X } from "lucide-react";
 import { useParams } from "next/navigation";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { useAppSelector } from "@/redux/store";
 import {
   removeExperience,
   addExperience,
@@ -50,17 +50,19 @@ const formField = {
 };
 function Experience() {
   const experienceList = useAppSelector((state) => state.resume.experiences);
-  // const [experienceList, setExperienceList] = useState([]);
   const params = useParams();
-
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [openDialog, setOpenDialog] = useState(false);
   const [activeExperience, setActiveExperience] = useState(-1);
+  const themeColor = useAppSelector(
+    (state) => state.resume.personalInfo.themeColor
+  );
 
   const handleSave = async () => {
     const body = JSON.stringify({
       data: {
+        ...(themeColor && { themeColor }),
         experience: experienceList.map(({ id, ...rest }: any) => {
           if (rest.endDate === "") {
             rest.endDate = null;
@@ -69,77 +71,9 @@ function Experience() {
         }),
       },
     });
-
+    console.log(body);
     const res = await savePersonalInfo(String(params.resumeId), body);
   };
-
-  // useEffect(() => {
-  //   resumeInfo?.Experience.length > 0 &&
-  //     setExperienceList(resumeInfo?.Experience);
-  // }, []);
-
-  // const handleChange = (index, event) => {
-  //   const newEntries = experienceList.slice();
-  //   const { name, value } = event.target;
-  //   newEntries[index][name] = value;
-  //   console.log(newEntries);
-  //   setExperienceList(newEntries);
-  // };
-
-  // const AddNewExperience = () => {
-  //   setExperienceList([
-  //     ...experienceList,
-  //     {
-  //       title: "",
-  //       companyName: "",
-  //       city: "",
-  //       state: "",
-  //       startDate: "",
-  //       endDate: "",
-  //       workSummery: "",
-  //     },
-  //   ]);
-  // };
-
-  // const RemoveExperience = () => {
-  //   setExperienceList((experienceList) => experienceList.slice(0, -1));
-  // };
-
-  // const handleRichTextEditor = (e, name, index) => {
-  //   const newEntries = experienceList.slice();
-  //   newEntries[index][name] = e.target.value;
-
-  //   setExperienceList(newEntries);
-  // };
-
-  // useEffect(() => {
-  //   setResumeInfo({
-  //     ...resumeInfo,
-  //     Experience: experienceList,
-  //   });
-  // }, [experienceList]);
-
-  // const onSave = () => {
-  //   setLoading(true);
-  //   const data = {
-  //     data: {
-  //       Experience: experienceList.map(({ id, ...rest }) => rest),
-  //     },
-  //   };
-
-  //   console.log(experienceList);
-
-  //   GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(
-  //     (res) => {
-  //       console.log(res);
-  //       setLoading(false);
-  //       toast("Details updated !");
-  //     },
-  //     (error) => {
-  //       setLoading(false);
-  //     }
-  //   );
-  // };
 
   return (
     <div>
@@ -155,7 +89,6 @@ function Experience() {
                   onClick={() => {
                     setActiveExperience(index);
                     setOpenDialog(true);
-                    // dispatch(removeExperience(index))
                   }}
                 >
                   <X />
@@ -323,7 +256,6 @@ function Experience() {
       </div>
 
       <AlertDialog open={openDialog} onOpenChange={setOpenDialog}>
-        {/* <AlertDialogTrigger>Open</AlertDialogTrigger> */}
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
