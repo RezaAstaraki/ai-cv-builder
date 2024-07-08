@@ -37,6 +37,7 @@ import {
 import { useDispatch } from "react-redux";
 import { Textarea } from "../ui/textarea";
 import { convertToDateString, convertToMonthYear, isToday } from "@/lib/utils";
+import { savePersonalInfo } from "@/service/strapiCms/serverActions";
 
 const formField = {
   title: "",
@@ -51,18 +52,25 @@ function Experience() {
   const experienceList = useAppSelector((state) => state.resume.experiences);
   // const [experienceList, setExperienceList] = useState([]);
   const params = useParams();
+
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [openDialog, setOpenDialog] = useState(false);
   const [activeExperience, setActiveExperience] = useState(-1);
 
   const handleSave = async () => {
-    console.log(experienceList);
-    const body = experienceList.map(({ id, ...rest }: any) => {
-      return rest;
+    const body = JSON.stringify({
+      data: {
+        experience: experienceList.map(({ id, ...rest }: any) => {
+          if (rest.endDate === "") {
+            rest.endDate = null;
+          }
+          return rest;
+        }),
+      },
     });
 
-    console.log("body = ", body[0]);
+    const res = await savePersonalInfo(String(params.resumeId), body);
   };
 
   // useEffect(() => {
@@ -222,7 +230,7 @@ function Experience() {
                       dispatch(
                         setStartDate({
                           index: index,
-                          startDate: convertToMonthYear(event.target.value),
+                          startDate: event.target.value,
                         })
                       );
                     }}
@@ -243,7 +251,7 @@ function Experience() {
                         dispatch(
                           setEndDate({
                             index: index,
-                            endDate: convertToMonthYear(event.target.value),
+                            endDate: event.target.value,
                           })
                         );
                         dispatch(

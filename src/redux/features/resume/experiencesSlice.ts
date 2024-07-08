@@ -9,7 +9,7 @@ const initialState: Experience[] = [
     companyName: "Amazon",
     city: "New York",
     state: "NY",
-    startDate: "Jan 2021",
+    startDate: "2020-12-30",
     endDate: "",
     currentlyWorking: true,
     workSummery:
@@ -26,8 +26,8 @@ const initialState: Experience[] = [
     companyName: "Google",
     city: "Charlotte",
     state: "NC",
-    startDate: "May 2019",
-    endDate: "Jan 2021",
+    startDate: "2019-04-29",
+    endDate: "2020-12-30",
     currentlyWorking: false,
     workSummery:
       "Designed, developed, and maintained full-stack applications using React and Node.js." +
