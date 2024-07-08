@@ -10,6 +10,16 @@ export type Experience = {
   workSummery: string;
 };
 
+export type Education = {
+  id: number;
+  universityName: string;
+  startDate: string;
+  endDate: string;
+  degree: string;
+  major: string;
+  description: string;
+};
+
 export interface PersonalInfoType {
   firstName: string;
   lastName: string;

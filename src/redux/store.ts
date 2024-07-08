@@ -1,10 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import loginModal from "./features/modal/loginSlice";
-// import signup from "./features/modal/signupSlice";
-// import addPropertyReducer from "./features/modal/addPropertySlice";
-// import searchReducer from "./features/modal/searchSlice";
-// import resumeMetaReducer from "./features/resume/resumeMetaSlice";
-// import personaInfoReducer from "./features/resume/personaInfoSlice";
 import resumeReducer from "./features/resume/resumeSlice";
 import { useDispatch, useSelector } from "react-redux";
 

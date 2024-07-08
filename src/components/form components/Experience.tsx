@@ -71,7 +71,6 @@ function Experience() {
         }),
       },
     });
-    console.log(body);
     const res = await savePersonalInfo(String(params.resumeId), body);
   };
 
