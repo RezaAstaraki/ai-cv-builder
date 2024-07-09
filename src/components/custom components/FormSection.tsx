@@ -16,6 +16,7 @@ import PersonalDetail from "../form components/PersonalDetail";
 import Summery from "../form components/Summery";
 import Experience from "../form components/Experience";
 import Education from "../form components/Education";
+import Skills from "../form components/Skills";
 
 const FormSection = ({ resumeInfo }: any) => {
   const resumeinfo = resumeInfo.data;
@@ -69,6 +70,7 @@ const FormSection = ({ resumeInfo }: any) => {
         {formIndex === 1 && <Summery />}
         {formIndex === 2 && <Experience />}
         {formIndex === 3 && <Education />}
+        {formIndex === 4 && <Skills />}
       </div>
     </div>
   );

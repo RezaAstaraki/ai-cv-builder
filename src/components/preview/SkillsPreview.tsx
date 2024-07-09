@@ -1,6 +1,8 @@
 "use client";
 import { Skill } from "@/redux/features/types";
 import { useAppSelector } from "@/redux/store";
+
+import { useParams } from "next/navigation";
 import React from "react";
 
 function SkillsPreview() {
@@ -17,7 +19,7 @@ function SkillsPreview() {
           color: themeColor,
         }}
       >
-        Education
+        Skills
       </h2>
       <hr
         style={{

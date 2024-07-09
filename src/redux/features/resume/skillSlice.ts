@@ -38,12 +38,18 @@ const skillSlice = createSlice({
       state[action.payload.index].rating = action.payload.rating;
     },
 
-    removeSkill: (state, action: PayloadAction<{ index: number }>) => {
-      state.slice(action.payload.index, 1);
+    addSkill: (state) => {
+      const newSkill: Skill = { id: -1, name: "", rating: 0 };
+      return [...state, newSkill];
+    },
+
+    removeSkill: (state, action: PayloadAction<number>) => {
+      state.splice(action.payload, 1);
     },
   },
 });
 
 export default skillSlice.reducer;
 
-export const { setSkillName, removeSkill, setSkillRating } = skillSlice.actions;
+export const { setSkillName, removeSkill, setSkillRating, addSkill } =
+  skillSlice.actions;
