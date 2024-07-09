@@ -68,7 +68,7 @@ function Skills() {
               <label className="text-xs">Name</label>
               <Input
                 className="w-full"
-                defaultValue={item.name}
+                //defaultValue={item.name}
                 onChange={(e) =>
                   dispatch(setSkillName({ index: index, name: e.target.value }))
                 }

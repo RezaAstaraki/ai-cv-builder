@@ -1,7 +1,7 @@
 import React from "react";
 import FormSection from "@/components/custom components/FormSection";
 import ResumePreview from "@/components/custom components/ResumePreview";
-import { getResume } from "@/service/strapiCms/serverActions";
+import { get, getResume } from "@/service/strapiCms/serverActions";
 
 const EditResume = async ({
   params,
@@ -11,15 +11,15 @@ const EditResume = async ({
   searchParams: any;
 }) => {
   const resumeIfo = await getResume(params.resumeId);
-  // console.log(resumeIfo);
+
+  const resumInfobyGet = await get("user-resumes/9?populate=*");
+  console.log("resumInfobyGet", resumInfobyGet);
 
   return (
-    // <ContextProvider value={{ dd: "sssss" }}>
     <div className="grid grid-cols-1 md:grid-cols-2 p-10 gap-10">
-      <FormSection resumeInfo={resumeIfo} />
+      <FormSection resumeInfo={resumInfobyGet} />
       <ResumePreview />
     </div>
-    // </ContextProvider>
   );
 };
 

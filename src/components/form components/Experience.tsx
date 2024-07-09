@@ -102,7 +102,7 @@ function Experience() {
                       )
                     }
                     value={item.title}
-                    defaultValue={item?.title}
+                    //defaultValue={item?.title}
                   />
                 </div>
                 <div>
@@ -117,7 +117,7 @@ function Experience() {
                         })
                       )
                     }
-                    defaultValue={item?.companyName}
+                    //defaultValue={item?.companyName}
                     value={item?.companyName}
                   />
                 </div>
@@ -133,7 +133,7 @@ function Experience() {
                         })
                       )
                     }
-                    defaultValue={item?.city}
+                    //defaultValue={item?.city}
                     value={item?.city}
                   />
                 </div>
@@ -149,7 +149,7 @@ function Experience() {
                         })
                       )
                     }
-                    defaultValue={item?.state}
+                    //defaultValue={item?.state}
                     value={item?.state}
                   />
                 </div>
@@ -166,7 +166,7 @@ function Experience() {
                         })
                       );
                     }}
-                    defaultValue={convertToDateString(item?.startDate)}
+                    //defaultValue={convertToDateString(item?.startDate)}
                     value={convertToDateString(item?.startDate)}
                   />
                 </div>
@@ -207,14 +207,14 @@ function Experience() {
                         );
                       }
                     }}
-                    defaultValue={convertToDateString(item?.endDate)}
+                    //defaultValue={convertToDateString(item?.endDate)}
                     value={convertToDateString(item?.endDate)}
                   />
                 </div>
                 <div className="col-span-2">
                   {/* Work Summery  */}
                   <Textarea
-                    defaultValue={item?.workSummery}
+                    //defaultValue={item?.workSummery}
                     onChange={(event) =>
                       dispatch(
                         setWorkSummery({

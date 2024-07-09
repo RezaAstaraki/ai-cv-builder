@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ArrowLeft, ArrowRight, Home } from "lucide-react";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import {
   getResume,
   revalidateDashboard,
 } from "@/service/strapiCms/serverActions";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import ThemeColor from "./ThemeColor";
 import { Button } from "../ui/button";
 import PersonalDetail from "../form components/PersonalDetail";
@@ -17,12 +17,23 @@ import Summery from "../form components/Summery";
 import Experience from "../form components/Experience";
 import Education from "../form components/Education";
 import Skills from "../form components/Skills";
+import { useAppSelector } from "@/redux/store";
 
 const FormSection = ({ resumeInfo }: any) => {
-  const resumeinfo = resumeInfo.data;
-  console.log(resumeinfo);
-
+  const resumeId = resumeInfo.data.id;
+  const router = useRouter();
   const [formIndex, setFormIndex] = useState(0);
+
+  const state = useAppSelector((state) => state.resume);
+  console.log("state = ", state);
+  console.log("resumeInfo = ", resumeInfo);
+
+  useEffect(() => {
+    if (formIndex === 5) {
+      router.push(`/resume/${resumeId.id}/view`);
+    }
+  }, [formIndex]);
+
   return (
     <div>
       <div>
@@ -58,7 +69,9 @@ const FormSection = ({ resumeInfo }: any) => {
               // disabled={!enableNext}
               className="flex gap-2"
               size="sm"
-              onClick={() => setFormIndex((prev) => prev + 1)}
+              onClick={() => {
+                setFormIndex((prev) => prev + 1);
+              }}
             >
               {" "}
               Next

@@ -85,7 +85,7 @@ function Education() {
                     )
                   }
                   value={item.universityName}
-                  defaultValue={item?.universityName}
+                  //defaultValue={item?.universityName}
                 />
               </div>
               <div className="relative grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg">
@@ -111,7 +111,7 @@ function Education() {
                         })
                       )
                     }
-                    defaultValue={item?.degree}
+                    //defaultValue={item?.degree}
                     value={item?.degree}
                   />
                 </div>
@@ -127,7 +127,7 @@ function Education() {
                         })
                       )
                     }
-                    defaultValue={item?.major}
+                    //defaultValue={item?.major}
                     value={item?.major}
                   />
                 </div>
@@ -145,7 +145,7 @@ function Education() {
                         })
                       );
                     }}
-                    defaultValue={convertToDateString(item?.startDate)}
+                    //defaultValue={convertToDateString(item?.startDate)}
                     value={convertToDateString(item?.startDate)}
                   />
                 </div>
@@ -174,14 +174,14 @@ function Education() {
                         );
                       }
                     }}
-                    defaultValue={convertToDateString(item?.endDate)}
+                    //defaultValue={convertToDateString(item?.endDate)}
                     value={convertToDateString(item?.endDate)}
                   />
                 </div>
                 <div className="col-span-2">
                   {/* Description  */}
                   <Textarea
-                    defaultValue={item?.description}
+                    //defaultValue={item?.description}
                     onChange={(event) =>
                       dispatch(
                         setDescription({

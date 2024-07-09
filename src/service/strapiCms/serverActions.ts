@@ -1,7 +1,5 @@
 "use server";
 
-console.log("some things run server actions");
-
 // import { revalidatePath, revalidateTag } from "next/cache";
 
 const API_KEY = process.env.NEXT_STAPI_API_KEY;
@@ -56,7 +54,7 @@ const put = async (endpoint: string, body: string) => {
   }
 };
 
-const get = async (endpoint: string) => {
+export const get = async (endpoint: string) => {
   try {
     const res = await fetch(`${baseUrl}${endpoint}`, {
       method: "GET",
@@ -73,6 +71,9 @@ const get = async (endpoint: string) => {
     }
 
     const response = await res.json();
+
+    // console.log("from get", response);
+
     return response;
   } catch (error) {
     console.error("Error adding resume:", error);
@@ -87,7 +88,6 @@ export const savePersonalInfo = async (id: string, body: FormData | string) => {
       ? body
       : JSON.stringify({ data: Object.fromEntries(body.entries()) });
   // revalidateTag("savePersonalInfo");
-  console.log(sendingBody);
   const res = await put(endpoint, sendingBody);
 };
 
@@ -115,13 +115,17 @@ export const getUserResumes = async (userEmail?: string) => {
   const endpoint = `user-resumes/?filters[userEmail][$eq]=${userEmail}`;
 
   const res = await get(endpoint);
+
   // revalidateTag("getUserResumes");
   return res;
 };
 
 export const getResume = async (documentId: string) => {
   const endpoint = `user-resumes/${documentId}?populate=*`;
+
+  console.log(endpoint);
   const res = await get(endpoint);
+  // console.log(res);
   return res;
 };
 
