@@ -71,12 +71,21 @@ export const get = async (endpoint: string) => {
     }
 
     const response = await res.json();
-
     // console.log("from get", response);
-
     return response;
   } catch (error) {
     console.error("Error adding resume:", error);
+    throw error;
+  }
+};
+
+export const getUserResumes = async (userEmail?: string) => {
+  const endpoint = `user-resumes/?filters[userEmail][$eq]=${userEmail}`;
+  try {
+    const res = await get(endpoint); // Ensure this line awaits the get function
+    return res;
+  } catch (error) {
+    console.error("Error fetching user resumes:", error);
     throw error;
   }
 };
@@ -107,16 +116,6 @@ export const addResume = async (
     },
   });
   const res = await post(endpoint, data);
-  return res;
-};
-
-export const getUserResumes = async (userEmail?: string) => {
-  // const endpoint = `user-resumes/?filters[userEmail][$eq]=${userEmail}&fields[0]=documentId&fields[1]=resumeId`;
-  const endpoint = `user-resumes/?filters[userEmail][$eq]=${userEmail}`;
-
-  const res = await get(endpoint);
-
-  // revalidateTag("getUserResumes");
   return res;
 };
 

@@ -12,8 +12,10 @@ const EditResume = async ({
 }) => {
   const resumeIfo = await getResume(params.resumeId);
 
-  const resumInfobyGet = await get("user-resumes/9?populate=*");
-  console.log("resumInfobyGet", resumInfobyGet);
+  const resumInfobyGet = await get(
+    `user-resumes/${params.resumeId}?populate=*`
+  );
+  console.log("resumeIfo by get resume", resumeIfo);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 p-10 gap-10">

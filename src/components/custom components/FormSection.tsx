@@ -25,8 +25,8 @@ const FormSection = ({ resumeInfo }: any) => {
   const [formIndex, setFormIndex] = useState(0);
 
   const state = useAppSelector((state) => state.resume);
-  console.log("state = ", state);
-  console.log("resumeInfo = ", resumeInfo);
+  // console.log("state = ", state);
+  console.log("resumeInfo by Get = ", JSON.stringify(resumeInfo));
 
   useEffect(() => {
     if (formIndex === 5) {
