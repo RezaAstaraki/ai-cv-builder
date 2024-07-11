@@ -22,6 +22,7 @@ import { useSearchParams } from "next/navigation";
 import { AlertDialogFooter, AlertDialogHeader } from "../ui/alert-dialog";
 
 const ResumeCard = ({ resume }: { resume: any }) => {
+  console.log(resume);
   return (
     <>
       <div
@@ -29,6 +30,9 @@ const ResumeCard = ({ resume }: { resume: any }) => {
           from-pink-100 via-purple-200 to-blue-200
         h-[280px] 
           rounded-t-lg border-t-4"
+        style={{
+          borderColor: resume?.attributes?.themeColor,
+        }}
       >
         <div
           className="flex 
@@ -39,9 +43,9 @@ const ResumeCard = ({ resume }: { resume: any }) => {
       </div>
       <div
         className="border p-3 flex justify-between  text-black rounded-b-lg shadow-lg"
-        //  style={{
-        //   background:resume?.themeColor
-        // }}
+        style={{
+          background: resume?.attributes?.themeColor,
+        }}
       >
         <h2 className="text-sm">{resume.attributes.title}</h2>
 

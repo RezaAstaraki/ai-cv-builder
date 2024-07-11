@@ -1,4 +1,5 @@
 "use client";
+import { convertToMonthYear } from "@/lib/utils";
 import { useAppSelector } from "@/redux/store";
 import React from "react";
 
@@ -36,7 +37,8 @@ function EducationalPreview({}) {
           <h2 className="text-xs flex justify-between">
             {education?.degree} in {education?.major}
             <span>
-              {education?.startDate} - {education?.endDate}
+              {convertToMonthYear(education?.startDate)} -{" "}
+              {convertToMonthYear(education?.endDate)}
             </span>
           </h2>
           <p className="text-xs my-2">{education?.description}</p>

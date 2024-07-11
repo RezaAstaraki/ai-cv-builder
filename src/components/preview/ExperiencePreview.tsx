@@ -1,4 +1,5 @@
 "use client";
+import { convertToMonthYear } from "@/lib/utils";
 import { useAppSelector } from "@/redux/store";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -37,8 +38,12 @@ function ExperiencePreview({}) {
           <h2 className="text-xs flex justify-between">
             {experience?.companyName},{experience?.city},{experience?.state}
             <span>
-              {experience?.startDate} To{" "}
-              {experience?.currentlyWorking ? "Present" : experience.endDate}{" "}
+              {experience?.startDate &&
+                convertToMonthYear(experience?.startDate)}{" "}
+              To{" "}
+              {experience?.currentlyWorking
+                ? "Present"
+                : convertToMonthYear(experience.endDate)}{" "}
             </span>
           </h2>
           {/* <p className='text-xs my-2'>

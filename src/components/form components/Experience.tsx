@@ -166,8 +166,7 @@ function Experience() {
                         })
                       );
                     }}
-                    //defaultValue={convertToDateString(item?.startDate)}
-                    value={convertToDateString(item?.startDate)}
+                    value={item?.startDate}
                   />
                 </div>
                 <div>
@@ -208,7 +207,7 @@ function Experience() {
                       }
                     }}
                     //defaultValue={convertToDateString(item?.endDate)}
-                    value={convertToDateString(item?.endDate)}
+                    value={item?.endDate}
                   />
                 </div>
                 <div className="col-span-2">

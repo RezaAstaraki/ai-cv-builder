@@ -146,7 +146,7 @@ function Education() {
                       );
                     }}
                     //defaultValue={convertToDateString(item?.startDate)}
-                    value={convertToDateString(item?.startDate)}
+                    value={item?.startDate}
                   />
                 </div>
                 <div>
@@ -174,14 +174,12 @@ function Education() {
                         );
                       }
                     }}
-                    //defaultValue={convertToDateString(item?.endDate)}
-                    value={convertToDateString(item?.endDate)}
+                    value={item?.endDate}
                   />
                 </div>
                 <div className="col-span-2">
                   {/* Description  */}
                   <Textarea
-                    //defaultValue={item?.description}
                     onChange={(event) =>
                       dispatch(
                         setDescription({

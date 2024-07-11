@@ -1,5 +1,6 @@
 "use client";
 
+import { useAppSelector } from "@/redux/store";
 import EducationalPreview from "../preview/EducationalPreview";
 import ExperiencePreview from "../preview/ExperiencePreview";
 import PersonalDetailPreview from "../preview/PersonalDetailPreview";
@@ -8,24 +9,28 @@ import SummeryPreview from "../preview/SummeryPreview";
 
 // import React, { useContext } from "react";
 
-const ResumePreview = ({}: {}) => {
+const ResumePreview = () => {
+  const themeColor = useAppSelector(
+    (state) => state.resume.personalInfo?.themeColor
+  );
+  const resume = useAppSelector((state) => state.resume);
+
   return (
     <div
       className="shadow-lg h-full p-14 border-t-[20px]"
-      // style={{ borderColor: "blue" }}
+      style={{ borderColor: themeColor }}
     >
       {/* Personal Detail  */}
       <PersonalDetailPreview />
       {/* Summery  */}
       <SummeryPreview />
       {/* Professional Experience  */}
-      <ExperiencePreview />
+      {resume.experiences.length > 0 && <ExperiencePreview />}
       {/* Educational  */}
-      {/* {resumeInfo?.education?.length>0&&   <EducationalPreview resumeInfo={resumeInfo} />} */}
-      {<EducationalPreview />}
+      {resume.education.length > 0 && <EducationalPreview />}
       {/* Skills  */}
       {/* {resumeInfo?.skills?.length>0&&    <SkillsPreview resumeInfo={resumeInfo}/>} */}
-      {<SkillsPreview />}
+      {resume.skill.length > 0 && <SkillsPreview />}
     </div>
   );
 };

@@ -1,7 +1,12 @@
+import ResumePreview from "@/components/custom components/ResumePreview";
 import React from "react";
 
 const ResumeViewPage = () => {
-  return <div>ResumeViewPage</div>;
+  return (
+    <>
+      <ResumePreview />
+    </>
+  );
 };
 
 export default ResumeViewPage;

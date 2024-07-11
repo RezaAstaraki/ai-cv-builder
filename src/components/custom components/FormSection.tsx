@@ -19,7 +19,7 @@ import Education from "../form components/Education";
 import Skills from "../form components/Skills";
 import { useAppSelector } from "@/redux/store";
 
-const FormSection = ({ resumeInfo }: any) => {
+const FormSection = () => {
   const params = useParams();
   const resumeId = params.resumeId;
   const router = useRouter();
@@ -38,13 +38,11 @@ const FormSection = ({ resumeInfo }: any) => {
       <div>
         <div className="flex justify-between items-center">
           <div className="flex gap-5">
-            {/* <Link href={`/dashboard?sear=${s}`}> */}
             <Link
               href={`/dashboard`}
               onClick={() => {
                 console.log("home hit");
-                // revalidateDashboard();
-                // dummy();
+                dummy();
               }}
             >
               <Button>
@@ -54,7 +52,6 @@ const FormSection = ({ resumeInfo }: any) => {
             <ThemeColor />
           </div>
           <div className="flex gap-2">
-            {/* {activeFormIndex>1&& */}
             {formIndex > 0 && (
               <Button
                 size="sm"

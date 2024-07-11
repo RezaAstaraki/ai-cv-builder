@@ -59,7 +59,7 @@ const EditResume = ({ params }: { params: { resumeId: string } }) => {
     <div className="grid grid-cols-1 md:grid-cols-2 p-10 gap-10">
       {resumeInfo && (
         <>
-          <FormSection resumeInfo={resumeInfo} />
+          <FormSection />
           <ResumePreview />
         </>
       )}
