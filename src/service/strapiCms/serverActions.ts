@@ -124,6 +124,7 @@ export const dummy = () => {
 };
 
 export const getUserResumes = async (userEmail?: string) => {
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
   const endpoint = `user-resumes/?filters[userEmail][$eq]=${userEmail}`;
   try {
     const res = await get(endpoint);
