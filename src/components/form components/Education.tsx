@@ -145,8 +145,7 @@ function Education() {
                         })
                       );
                     }}
-                    //defaultValue={convertToDateString(item?.startDate)}
-                    value={item?.startDate}
+                    value={item?.startDate || ""}
                   />
                 </div>
                 <div>
@@ -174,7 +173,7 @@ function Education() {
                         );
                       }
                     }}
-                    value={item?.endDate}
+                    value={item?.endDate || ""}
                   />
                 </div>
                 <div className="col-span-2">

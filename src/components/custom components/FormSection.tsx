@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 
 import { ArrowLeft, ArrowRight, Home } from "lucide-react";
 import Link from "next/link";
@@ -27,7 +27,7 @@ const FormSection = () => {
 
   const state = useAppSelector((state) => state.resume);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (formIndex === 5) {
       router.push(`/resume/${resumeId}/view`);
     }
@@ -41,7 +41,6 @@ const FormSection = () => {
             <Link
               href={`/dashboard`}
               onClick={() => {
-                console.log("home hit");
                 dummy();
               }}
             >

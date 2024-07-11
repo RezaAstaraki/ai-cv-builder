@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
+
 const API_KEY = process.env.NEXT_STAPI_API_KEY;
 
 const baseUrl = "http://localhost:1337/api/";
@@ -61,7 +63,7 @@ export const get = async (endpoint: string) => {
         Authorization: `Bearer ${API_KEY}`,
       },
       // cache: "no-store",
-      // next: { tags: ["getUserResumes"] },
+      next: { tags: ["getUserResumes", "resumeDelete"] },
     });
 
     if (!res.ok) {
@@ -77,9 +79,33 @@ export const get = async (endpoint: string) => {
   }
 };
 
+export const deleteRequest = async (endpoint: string) => {
+  console.log(`${baseUrl}${endpoint}`);
+  try {
+    const res = await fetch(`${baseUrl}${endpoint}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${API_KEY}`,
+      },
+      // cache: "no-store",
+      // next: { tags: [""] },
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const response = await res.json();
+    revalidateTag("resumeDelete");
+    return response;
+  } catch (error) {
+    console.error("Error fetching resume:", error);
+    throw error;
+  }
+};
+
 export const getResume = async (documentId: string) => {
   const endpoint = `user-resumes/${documentId}?populate=*`;
-
   const res = await get(endpoint);
   return res;
 };

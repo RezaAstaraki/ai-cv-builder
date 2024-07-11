@@ -30,11 +30,20 @@ import {
 } from "../ui/alert-dialog";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { deleteRequest } from "@/service/strapiCms/serverActions";
 
 const ResumeCard = ({ resume }: { resume: any }) => {
   const [openAlert, setOpenAlert] = useState(false);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  // const [activeResume, setActiveResume] = useState(-1);
+  const onDelete = async () => {
+    setLoading(true);
+    await deleteRequest(`user-resumes/${resume.id}`);
+    setLoading(false);
+    setOpenAlert(false);
+  };
+
   return (
     <div>
       <Link
@@ -61,6 +70,7 @@ const ResumeCard = ({ resume }: { resume: any }) => {
               src="/cv.png"
               width={80}
               height={80}
+              // placeholder="blur"
             />
           </div>
         </div>
@@ -106,7 +116,6 @@ const ResumeCard = ({ resume }: { resume: any }) => {
             <DropdownMenuItem
               onClick={(e) => {
                 setOpenAlert(true);
-                console.log("delete");
               }}
             >
               <Trash2 />
@@ -115,7 +124,7 @@ const ResumeCard = ({ resume }: { resume: any }) => {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <AlertDialog open={openAlert} onOpenChange={setOpenAlert}>
+        <AlertDialog open={openAlert}>
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -125,10 +134,12 @@ const ResumeCard = ({ resume }: { resume: any }) => {
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogCancel onClick={() => setOpenAlert(false)}>
+                Cancel
+              </AlertDialogCancel>
               <AlertDialogAction
-              // onClick={onDelete}
-              // disabled={loading}
+                onClick={async () => onDelete()}
+                disabled={loading}
               >
                 {loading ? <Loader2Icon className="animate-spin" /> : "Delete"}
               </AlertDialogAction>

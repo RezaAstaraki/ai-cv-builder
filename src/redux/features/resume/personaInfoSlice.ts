@@ -8,7 +8,7 @@ const initialState: PersonalInfoType = {
   address: "",
   phone: "",
   email: "",
-  themeColor: "",
+  themeColor: "#808080",
 };
 
 export const personalInfoSlice = createSlice({
