@@ -22,8 +22,6 @@ import { useSearchParams } from "next/navigation";
 import { AlertDialogFooter, AlertDialogHeader } from "../ui/alert-dialog";
 
 const ResumeCard = ({ resume }: { resume: any }) => {
-  console.log("resume as param = ", resume);
-  console.log("resume as param = ", resume.attributes.title);
   return (
     <>
       <div

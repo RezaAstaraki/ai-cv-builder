@@ -3,23 +3,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Skill } from "../types";
 
-const initialState: Skill[] = [
-  {
-    id: 0,
-    name: "Angular",
-    rating: 80,
-  },
-  {
-    id: 1,
-    name: "React",
-    rating: 100,
-  },
-  {
-    id: 2,
-    name: "MySql",
-    rating: 80,
-  },
-];
+const initialState: Skill[] = [];
 
 const skillSlice = createSlice({
   name: "skill",

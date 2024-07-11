@@ -1,4 +1,4 @@
-import { combineReducers, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, combineReducers, createSlice } from "@reduxjs/toolkit";
 import personaInfoSliceReducer from "./personaInfoSlice";
 import resumeMetaReducer from "./resumeMetaSlice";
 import experiencesReducer from "./experiencesSlice";
@@ -33,10 +33,15 @@ const resumeReducer = combineReducers({
 const resumeSlice = createSlice({
   name: "resume",
   initialState: {} as ResumeState,
-  reducers: {},
+  reducers: {
+    setResumeData(state, action: PayloadAction<ResumeState>) {
+      return action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addDefaultCase(resumeReducer);
   },
 });
 
 export default resumeSlice.reducer;
+export const { setResumeData } = resumeSlice.actions;

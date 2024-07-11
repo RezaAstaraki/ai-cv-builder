@@ -2,42 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { Experience } from "../types";
 
-const initialState: Experience[] = [
-  {
-    id: 0,
-    title: "Full Stack Developer",
-    companyName: "Amazon",
-    city: "New York",
-    state: "NY",
-    startDate: "2020-12-30",
-    endDate: "",
-    currentlyWorking: true,
-    workSummery:
-      "Designed, developed, and maintained full-stack applications using React and Node.js.\n" +
-      "• Implemented responsive user interfaces with React, ensuring seamless user experiences across\n" +
-      "various devices and browsers.\n" +
-      "• Maintaining the React Native in-house organization application." +
-      "• Created RESTful APIs with Node.js and Express, facilitating data communication between the front-end" +
-      "and back-end systems.",
-  },
-  {
-    id: 1,
-    title: "Frontend Developer",
-    companyName: "Google",
-    city: "Charlotte",
-    state: "NC",
-    startDate: "2019-04-29",
-    endDate: "2020-12-30",
-    currentlyWorking: false,
-    workSummery:
-      "Designed, developed, and maintained full-stack applications using React and Node.js." +
-      "• Implemented responsive user interfaces with React, ensuring seamless user experiences across" +
-      "various devices and browsers." +
-      "• Maintaining the React Native in-house organization application." +
-      "• Created RESTful APIs with Node.js and Express, facilitating data communication between the front-end" +
-      "and back-end systems.",
-  },
-];
+const initialState: Experience[] = [];
 
 const experiencesSlice = createSlice({
   name: "experiences",

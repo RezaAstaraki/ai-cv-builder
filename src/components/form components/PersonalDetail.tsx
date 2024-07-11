@@ -61,7 +61,7 @@ function PersonalDetail({}) {
             <label className="text-sm">First Name</label>
             <Input
               name="firstName"
-              defaultValue={personalInfo?.firstName}
+              value={personalInfo?.firstName || ""}
               required
               onChange={(e) => dispatch(setFirstName(e.target.value))}
             />
@@ -72,7 +72,7 @@ function PersonalDetail({}) {
               name="lastName"
               required
               onChange={(e) => dispatch(setLastName(e.target.value))}
-              defaultValue={personalInfo?.lastName}
+              value={personalInfo?.lastName || ""}
             />
           </div>
           <div className="col-span-2">
@@ -81,7 +81,7 @@ function PersonalDetail({}) {
               name="jobTitle"
               required
               onChange={(e) => dispatch(setJobTitle(e.target.value))}
-              defaultValue={personalInfo?.jobTitle}
+              value={personalInfo?.jobTitle || ""}
             />
           </div>
           <div className="col-span-2">
@@ -89,7 +89,7 @@ function PersonalDetail({}) {
             <Input
               name="address"
               required
-              defaultValue={personalInfo?.address}
+              value={personalInfo?.address || ""}
               onChange={(e) => dispatch(setAddress(e.target.value))}
             />
           </div>
@@ -98,7 +98,7 @@ function PersonalDetail({}) {
             <Input
               name="phone"
               required
-              defaultValue={personalInfo?.phone}
+              value={personalInfo?.phone || ""}
               onChange={(e) => dispatch(setPhoneNo(e.target.value))}
             />
           </div>
@@ -107,7 +107,7 @@ function PersonalDetail({}) {
             <Input
               name="email"
               required
-              defaultValue={personalInfo?.email}
+              value={personalInfo?.email || ""}
               onChange={(e) => dispatch(setEmail(e.target.value))}
             />
           </div>

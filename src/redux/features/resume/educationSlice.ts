@@ -1,28 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Education } from "../types";
 
-const initialState: Education[] = [
-  {
-    id: 1,
-    universityName: "Western Illinois University",
-    startDate: "2018-07-30",
-    endDate: "2019-11-29",
-    degree: "Master",
-    major: "Computer Science",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
-  },
-  {
-    id: 2,
-    universityName: "Western Illinois University",
-    startDate: "2018-07-30",
-    endDate: "2019-11-29",
-    degree: "Master",
-    major: "Computer Science",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
-  },
-];
+const initialState: Education[] = [];
 
 const educationSlice = createSlice({
   name: "education",

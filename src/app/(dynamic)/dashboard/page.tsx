@@ -13,8 +13,6 @@ const DashboardPage = async () => {
   const userEmail = user?.primaryEmailAddress?.emailAddress;
   const { data } = await getUserResumes(userEmail);
 
-  console.log(data);
-
   return (
     <div className="p-10 md:px-20 lg:px-32">
       <h2 className="font-bold text-3xl pb-5">My Resume</h2>

@@ -20,17 +20,16 @@ import Skills from "../form components/Skills";
 import { useAppSelector } from "@/redux/store";
 
 const FormSection = ({ resumeInfo }: any) => {
-  const resumeId = resumeInfo.data.id;
+  const params = useParams();
+  const resumeId = params.resumeId;
   const router = useRouter();
   const [formIndex, setFormIndex] = useState(0);
 
   const state = useAppSelector((state) => state.resume);
-  // console.log("state = ", state);
-  console.log("resumeInfo by Get = ", JSON.stringify(resumeInfo));
 
   useEffect(() => {
     if (formIndex === 5) {
-      router.push(`/resume/${resumeId.id}/view`);
+      router.push(`/resume/${resumeId}/view`);
     }
   }, [formIndex]);
 

@@ -1,7 +1,5 @@
 "use server";
 
-// import { revalidatePath, revalidateTag } from "next/cache";
-
 const API_KEY = process.env.NEXT_STAPI_API_KEY;
 
 const baseUrl = "http://localhost:1337/api/";
@@ -71,23 +69,19 @@ export const get = async (endpoint: string) => {
     }
 
     const response = await res.json();
-    // console.log("from get", response);
+
     return response;
   } catch (error) {
-    console.error("Error adding resume:", error);
+    console.error("Error fetching resume:", error);
     throw error;
   }
 };
 
-export const getUserResumes = async (userEmail?: string) => {
-  const endpoint = `user-resumes/?filters[userEmail][$eq]=${userEmail}`;
-  try {
-    const res = await get(endpoint); // Ensure this line awaits the get function
-    return res;
-  } catch (error) {
-    console.error("Error fetching user resumes:", error);
-    throw error;
-  }
+export const getResume = async (documentId: string) => {
+  const endpoint = `user-resumes/${documentId}?populate=*`;
+
+  const res = await get(endpoint);
+  return res;
 };
 
 export const savePersonalInfo = async (id: string, body: FormData | string) => {
@@ -119,15 +113,6 @@ export const addResume = async (
   return res;
 };
 
-export const getResume = async (documentId: string) => {
-  const endpoint = `user-resumes/${documentId}?populate=*`;
-
-  console.log(endpoint);
-  const res = await get(endpoint);
-  // console.log(res);
-  return res;
-};
-
 export const revalidateDashboard = () => {
   // revalidatePath("/dashboard");
   // revalidateTag("getUserResumes");
@@ -136,4 +121,15 @@ export const revalidateDashboard = () => {
 
 export const dummy = () => {
   console.log("dummy");
+};
+
+export const getUserResumes = async (userEmail?: string) => {
+  const endpoint = `user-resumes/?filters[userEmail][$eq]=${userEmail}`;
+  try {
+    const res = await get(endpoint);
+    return res;
+  } catch (error) {
+    console.error("Error fetching user resumes:", error);
+    throw error;
+  }
 };
