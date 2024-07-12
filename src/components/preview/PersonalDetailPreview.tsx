@@ -1,5 +1,6 @@
 "use client";
 
+import { capitalizeFirstLetter, capitalizeFirstLetterWord } from "@/lib/utils";
 import { useAppSelector } from "@/redux/store";
 import { useSelector } from "react-redux";
 
@@ -13,10 +14,11 @@ function PersonalDetailPreview() {
           color: personalInfo?.themeColor,
         }}
       >
-        {personalInfo?.firstName} {personalInfo?.lastName}
+        {capitalizeFirstLetter(personalInfo?.firstName)}{" "}
+        {capitalizeFirstLetter(personalInfo?.lastName)}
       </h2>
       <h2 className="text-center text-sm font-medium">
-        {personalInfo?.jobTitle}
+        {capitalizeFirstLetterWord(personalInfo?.jobTitle)}
       </h2>
       <h2
         className="text-center font-normal text-xs"

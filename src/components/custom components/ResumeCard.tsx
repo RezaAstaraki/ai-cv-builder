@@ -1,12 +1,16 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
+  Captions,
   Cloud,
   Download,
   FilePenLine,
   Loader2Icon,
+  LoaderCircle,
+  Save,
   SquareGanttChart,
+  SquarePen,
   Trash2,
   View,
 } from "lucide-react";
@@ -31,11 +35,14 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { deleteRequest } from "@/service/strapiCms/serverActions";
+import { Input } from "../ui/input";
 
 const ResumeCard = ({ resume }: { resume: any }) => {
   const [openAlert, setOpenAlert] = useState(false);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [editTitle, setEditTitle] = useState(false);
+  const [title, setTitle] = useState(resume.attributes.title);
   // const [activeResume, setActiveResume] = useState(-1);
   const onDelete = async () => {
     setLoading(true);
@@ -43,6 +50,18 @@ const ResumeCard = ({ resume }: { resume: any }) => {
     setLoading(false);
     setOpenAlert(false);
   };
+  // const inputRef = useRef<HTMLElement>();
+
+  const saveTitle = async () => {
+    if (title !== resume.attributes.title && title !== "") {
+      setLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setLoading(false);
+    }
+    setEditTitle(false);
+  };
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div>
@@ -76,12 +95,49 @@ const ResumeCard = ({ resume }: { resume: any }) => {
         </div>
       </Link>
       <div
-        className="border p-3 flex justify-between  text-black rounded-b-lg shadow-lg"
+        className="border p-3 flex justify-between items-center  text-black rounded-b-lg shadow-lg"
         style={{
           background: resume?.attributes?.themeColor,
         }}
       >
-        <h2 className="text-sm">{resume.attributes.title}</h2>
+        <h2 className="text-sm h-[35px] flex items-center">
+          <span className="relative flex items-center">
+            <Input
+              required
+              disabled={!editTitle}
+              ref={inputRef}
+              className={`h-[35px] cursor-text disabled:cursor-default   ${
+                !editTitle ? "bg-white/0 border-white/0 " : "bg-white "
+              }`}
+              value={title || ""}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+              onKeyDown={async (e) => {
+                if (e.key === "Enter") {
+                  await saveTitle();
+                } else if (e.key === "Escape") {
+                  setTitle(resume.attributes.title);
+                  setEditTitle(false);
+                }
+              }}
+            />
+            {editTitle &&
+              title !== resume.attributes.title &&
+              (loading ? (
+                <LoaderCircle className="absolute right-2  animate-spin " />
+              ) : (
+                <Save
+                  fill="skyblue"
+                  strokeWidth={0.5}
+                  className="absolute right-2 cursor-pointer hover:animate-pulse hover:scale-125 transition"
+                  onClick={() => {
+                    setEditTitle(false);
+                  }}
+                />
+              ))}
+          </span>
+        </h2>
 
         <DropdownMenu>
           <DropdownMenuTrigger>
@@ -90,8 +146,22 @@ const ResumeCard = ({ resume }: { resume: any }) => {
             />
           </DropdownMenuTrigger>
           <DropdownMenuContent
-          // className="bg-gray-100  rounded-md p-4 z-50 flex gap-2 flex-col"
+            onCloseAutoFocus={(e) => {
+              e.preventDefault();
+              if (inputRef.current) {
+                inputRef.current.focus();
+                inputRef.current.select();
+              }
+            }}
           >
+            <DropdownMenuItem
+              onClick={() => {
+                setEditTitle(true);
+              }}
+            >
+              <SquarePen />
+              Edit Title
+            </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => router.push(`/dashboard/resume/${resume.id}/edit`)}
             >

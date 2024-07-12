@@ -45,3 +45,24 @@ export function isToday(dateString: string): boolean {
     dateToCheck.getFullYear() === today.getFullYear()
   );
 }
+
+export function capitalizeFirstLetter(string: string | null) {
+  return string && string.length > 0
+    ? `${string[0].toUpperCase()}${string.slice(1).toLowerCase()}`
+    : string;
+}
+
+export function capitalizeFirstLetterWord(string: string | null) {
+  if (string === null) {
+    return null;
+  }
+
+  return string
+    .split(/(\s|-|_)/) // Split by space, hyphen, or underscore, keeping the delimiters
+    .map((word) =>
+      word.length > 0
+        ? `${word[0].toUpperCase()}${word.slice(1).toLowerCase()}`
+        : word
+    )
+    .join("");
+}

@@ -21,6 +21,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.400.0",
     "next": "14.1.4",
+    "openai": "^4.52.2",
     "react": "^18",
     "react-dom": "^18",
     "react-rating": "^2.0.5",
