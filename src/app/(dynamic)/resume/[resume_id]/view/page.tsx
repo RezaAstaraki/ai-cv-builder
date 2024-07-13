@@ -1,3 +1,8 @@
+import EducationalPreview from "@/components/preview/EducationalPreview";
+import ExperiencePreview from "@/components/preview/ExperiencePreview";
+import PersonalDetailPreview from "@/components/preview/PersonalDetailPreview";
+import SkillsPreview from "@/components/preview/SkillsPreview";
+import SummeryPreview from "@/components/preview/SummeryPreview";
 import { getFormattedData } from "@/lib/utils";
 import { get } from "@/service/strapiCms/serverActions";
 
@@ -23,7 +28,12 @@ const ResumeViewPage = async ({
       {/* Summery  */}
       <SummeryPreview personalInfo={resume.personalInfo} />
       {/* Professional Experience  */}
-      {resume.experiences.length > 0 && <ExperiencePreview />}
+      {resume.experiences.length > 0 && (
+        <ExperiencePreview
+          experienceList={resume.experiences}
+          themeColor={themeColor}
+        />
+      )}
       {/* Educational  */}
       {resume.education.length > 0 && (
         <EducationalPreview

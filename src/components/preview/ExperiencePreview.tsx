@@ -1,13 +1,16 @@
 import { convertToMonthYear } from "@/lib/utils";
+import { Experience } from "@/redux/features/types";
 import { useAppSelector } from "@/redux/store";
 import React from "react";
 import { useSelector } from "react-redux";
 
-function ExperiencePreview({}) {
-  const resumeInfo = useAppSelector((state) => state.resume.experiences);
-  const themeColor = useAppSelector(
-    (state) => state.resume.personalInfo.themeColor
-  );
+function ExperiencePreview({
+  experienceList: experienceList,
+  themeColor,
+}: {
+  experienceList: Experience[];
+  themeColor: string;
+}) {
   return (
     <div className="my-6">
       <h2
@@ -24,7 +27,7 @@ function ExperiencePreview({}) {
         }}
       />
 
-      {resumeInfo?.map((experience, index) => (
+      {experienceList?.map((experience, index) => (
         <div key={index} className="my-5">
           <h2
             className="text-sm font-bold"

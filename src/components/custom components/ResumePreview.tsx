@@ -25,7 +25,12 @@ const ResumePreview = () => {
       {/* Summery  */}
       <SummeryPreview personalInfo={resume.personalInfo} />
       {/* Professional Experience  */}
-      {resume.experiences.length > 0 && <ExperiencePreview />}
+      {resume.experiences.length > 0 && (
+        <ExperiencePreview
+          experienceList={resume.experiences}
+          themeColor={String(themeColor)}
+        />
+      )}
       {/* Educational  */}
       {resume.education.length > 0 && (
         <EducationalPreview
