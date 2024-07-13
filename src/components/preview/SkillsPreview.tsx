@@ -1,28 +1,27 @@
 import { Skill } from "@/redux/features/types";
-import { useAppSelector } from "@/redux/store";
 
-import { useParams } from "next/navigation";
 import React from "react";
 
-function SkillsPreview() {
-  const themeColor = useAppSelector(
-    (state) => state.resume.personalInfo.themeColor
-  );
-  const skillList = useAppSelector((state) => state.resume.skill);
-
+function SkillsPreview({
+  skillList,
+  themeColor,
+}: {
+  skillList: Skill[];
+  themeColor: string;
+}) {
   return (
     <div className="my-6">
       <h2
         className="text-center font-bold text-sm mb-2"
         style={{
-          color: themeColor,
+          color: String(themeColor),
         }}
       >
         Skills
       </h2>
       <hr
         style={{
-          borderColor: themeColor,
+          borderColor: String(themeColor),
         }}
       />
 
@@ -34,7 +33,7 @@ function SkillsPreview() {
               <div
                 className="h-2"
                 style={{
-                  backgroundColor: themeColor,
+                  backgroundColor: String(themeColor),
                   width: skill?.rating + "%",
                 }}
               ></div>

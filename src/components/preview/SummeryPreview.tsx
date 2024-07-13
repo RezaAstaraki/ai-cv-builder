@@ -1,8 +1,6 @@
-import { useAppSelector } from "@/redux/store";
+import { PersonalInfoType } from "@/redux/features/types";
 
-function SummeryPreview({}) {
-  const personalInfo = useAppSelector((state) => state.resume.personalInfo);
-
+function SummeryPreview({ personalInfo }: { personalInfo: PersonalInfoType }) {
   return <p className="text-xs">{personalInfo?.summery}</p>;
 }
 

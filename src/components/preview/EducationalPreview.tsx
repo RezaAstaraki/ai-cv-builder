@@ -1,12 +1,14 @@
 import { convertToMonthYear } from "@/lib/utils";
-import { useAppSelector } from "@/redux/store";
+import { Education } from "@/redux/features/types";
 import React from "react";
 
-function EducationalPreview({}) {
-  const themeColor = useAppSelector(
-    (state) => state.resume.personalInfo.themeColor
-  );
-  const eductionList = useAppSelector((state) => state.resume.education);
+function EducationalPreview({
+  eductionList,
+  themeColor,
+}: {
+  eductionList: Education[];
+  themeColor: string;
+}) {
   return (
     <div className="my-6">
       <h2

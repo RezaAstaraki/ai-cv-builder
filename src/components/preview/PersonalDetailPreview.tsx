@@ -1,9 +1,11 @@
 import { capitalizeFirstLetter, capitalizeFirstLetterWord } from "@/lib/utils";
-import { useAppSelector } from "@/redux/store";
-import { useSelector } from "react-redux";
+import { PersonalInfoType } from "@/redux/features/types";
 
-function PersonalDetailPreview() {
-  const personalInfo = useAppSelector((state) => state.resume.personalInfo);
+function PersonalDetailPreview({
+  personalInfo,
+}: {
+  personalInfo: PersonalInfoType;
+}) {
   return (
     <div>
       <h2

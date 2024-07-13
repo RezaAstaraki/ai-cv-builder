@@ -21,16 +21,25 @@ const ResumePreview = () => {
       style={{ borderColor: themeColor }}
     >
       {/* Personal Detail  */}
-      <PersonalDetailPreview />
+      <PersonalDetailPreview personalInfo={resume.personalInfo} />
       {/* Summery  */}
-      <SummeryPreview />
+      <SummeryPreview personalInfo={resume.personalInfo} />
       {/* Professional Experience  */}
       {resume.experiences.length > 0 && <ExperiencePreview />}
       {/* Educational  */}
-      {resume.education.length > 0 && <EducationalPreview />}
+      {resume.education.length > 0 && (
+        <EducationalPreview
+          eductionList={resume.education}
+          themeColor={String(themeColor)}
+        />
+      )}
       {/* Skills  */}
-      {/* {resumeInfo?.skills?.length>0&&    <SkillsPreview resumeInfo={resumeInfo}/>} */}
-      {resume.skill.length > 0 && <SkillsPreview />}
+      {resume.skill.length > 0 && (
+        <SkillsPreview
+          skillList={resume.skill}
+          themeColor={String(themeColor)}
+        />
+      )}
     </div>
   );
 };
