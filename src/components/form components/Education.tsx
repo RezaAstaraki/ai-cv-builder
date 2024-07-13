@@ -36,6 +36,7 @@ import {
   setStartDate,
   setUniversityName,
 } from "@/redux/features/resume/educationSlice";
+import RichTextEditor from "../custom components/rich text editor/RichTextEditor";
 
 function Education() {
   const educationList = useAppSelector((state) => state.resume.education);
@@ -113,7 +114,6 @@ function Education() {
                         })
                       )
                     }
-                    //defaultValue={item?.degree}
                     value={item?.degree}
                   />
                 </div>
@@ -129,7 +129,6 @@ function Education() {
                         })
                       )
                     }
-                    //defaultValue={item?.major}
                     value={item?.major}
                   />
                 </div>
@@ -180,8 +179,9 @@ function Education() {
                 </div>
                 <div className="col-span-2">
                   {/* Description  */}
-                  <Textarea
-                    onChange={(event) =>
+                  <RichTextEditor
+                    label="Add Description"
+                    onRichTextChange={(event) =>
                       dispatch(
                         setDescription({
                           index: index,
@@ -189,7 +189,7 @@ function Education() {
                         })
                       )
                     }
-                    value={item?.description}
+                    initialValue={item?.description}
                   />
                 </div>
               </div>

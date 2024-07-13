@@ -38,6 +38,7 @@ import { useDispatch } from "react-redux";
 import { Textarea } from "../ui/textarea";
 import { convertToDateString, convertToMonthYear, isToday } from "@/lib/utils";
 import { savePersonalInfo } from "@/service/strapiCms/serverActions";
+import RichTextEditor from "../custom components/rich text editor/RichTextEditor";
 
 const formField = {
   title: "",
@@ -211,9 +212,9 @@ function Experience() {
                 </div>
                 <div className="col-span-2">
                   {/* Work Summery  */}
-                  <Textarea
-                    //defaultValue={item?.workSummery}
-                    onChange={(event) =>
+                  <RichTextEditor
+                    initialValue={item?.workSummery || ""}
+                    onRichTextChange={(event) =>
                       dispatch(
                         setWorkSummery({
                           index: index,
@@ -221,7 +222,6 @@ function Experience() {
                         })
                       )
                     }
-                    value={item?.workSummery}
                   />
                 </div>
               </div>

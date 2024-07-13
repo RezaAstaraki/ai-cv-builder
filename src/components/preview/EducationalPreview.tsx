@@ -42,7 +42,10 @@ function EducationalPreview({
               {convertToMonthYear(education?.endDate)}
             </span>
           </h2>
-          <p className="text-xs my-2">{education?.description}</p>
+          <div
+            className="rsw-ce rsw-ce text-xs my-2"
+            dangerouslySetInnerHTML={{ __html: education?.description }}
+          ></div>
         </div>
       ))}
     </div>

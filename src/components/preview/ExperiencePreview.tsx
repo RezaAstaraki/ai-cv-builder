@@ -48,11 +48,8 @@ function ExperiencePreview({
                 : convertToMonthYear(experience.endDate)}{" "}
             </span>
           </h2>
-          {/* <p className='text-xs my-2'>
-                    {experience.workSummery}
-                </p> */}
           <div
-            className="text-xs my-2"
+            className="my-2 text-xs rsw-ce rsw-ce"
             dangerouslySetInnerHTML={{ __html: experience?.workSummery }}
           />
         </div>

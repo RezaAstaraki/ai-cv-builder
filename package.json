@@ -26,6 +26,7 @@
     "react-dom": "^18",
     "react-rating": "^2.0.5",
     "react-redux": "^9.1.2",
+    "react-simple-wysiwyg": "^3.1.1",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^10.0.0"

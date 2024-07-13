@@ -14,9 +14,10 @@ import { Textarea } from "../ui/textarea";
 import { setSummary } from "@/redux/features/resume/personaInfoSlice";
 import { savePersonalInfo } from "@/service/strapiCms/serverActions";
 import { useParams } from "next/navigation";
+import RichTextEditor from "../custom components/rich text editor/RichTextEditor";
 
 const prompt =
-  "Job Title: {jobTitle} , Depends on job title give me list of  summery for 3 experience level, Mid Level and Freasher level in 3 -4 lines in array format, With summery and experience_level Field in JSON Format";
+  "Job Title: {jobTitle} , Depends on job title give me list of  summery for 3 experience level, Mid Level and Fresher level in 3 -4 lines in array format, With summery and experience_level Field in JSON Format";
 function Summery({}) {
   const param = useParams<{ resumeId: string }>();
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function Summery({}) {
   const [loading, setLoading] = useState(false);
   // const [aiGeneratedSummeryList, setAiGenerateSummeryList] = useState();
 
-  const GenerateSummeryFromAI = async () => {
+  const GenerateSummaryFromAI = async () => {
     setLoading(true);
     // const PROMPT = prompt.replace("{jobTitle}", resumeInfo?.jobTitle);
     // console.log(PROMPT);
@@ -45,17 +46,20 @@ function Summery({}) {
     if (personalInfo.themeColor !== "") {
       formData.append("themeColor", String(personalInfo?.themeColor));
     }
+    formData.append("summery", String(personalInfo?.summery));
     const data = { data: formData };
+    console.log(formData);
 
     const response = await savePersonalInfo(param.resumeId, formData);
+    console.log(response);
     setLoading(false);
   };
 
   return (
     <div>
       <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
-        <h2 className="font-bold text-lg">Summery</h2>
-        <p>Add Summery for your job title</p>
+        <h2 className="font-bold text-lg">Summary</h2>
+        <p>Add Summary for your job title</p>
 
         <form
           onSubmit={async (e) => await submitSummary(e)}
@@ -63,8 +67,8 @@ function Summery({}) {
           // onSubmit={onSave}
         >
           <div className="flex justify-between items-end">
-            <label>Add Summery</label>
-            <Button
+            {/* <label></label> */}
+            {/* <Button
               variant="outline"
               // onClick={() => GenerateSummeryFromAI()}
               type="button"
@@ -72,15 +76,22 @@ function Summery({}) {
               className="border-primary text-primary flex gap-2"
             >
               <Brain className="h-4 w-4" /> Generate from AI
-            </Button>
+            </Button> */}
           </div>
-          <Textarea
+          {/* <Textarea
             className="mt-5"
             name="summery"
             required
             // value={summery}
             defaultValue={personalInfo?.summery}
             onChange={(e) => dispatch(setSummary(e.target.value))}
+          /> */}
+          <RichTextEditor
+            onRichTextChange={(e) => {
+              dispatch(setSummary(e.target.value));
+            }}
+            label="Add Summary"
+            initialValue={String(personalInfo?.summery)}
           />
           <div className="mt-2 flex justify-end">
             <Button type="submit" disabled={loading}>
