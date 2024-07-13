@@ -68,10 +68,22 @@ function Education() {
     <div>
       <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
         <h2 className="font-bold text-lg">Education</h2>
-        <p>Add Your education details</p>
+        <p className="">Add Your education details</p>
         <div>
           {educationList.map((item, index) => (
-            <div key={index}>
+            <div
+              key={index}
+              className="border rounded-lg p-3 relative  my-3 hover:shadow-inner shadow-md"
+            >
+              <div
+                className="absolute right-2  top-0.5 hover:bg-red-300/30 scale-75 rounded-md border border-solid p-1"
+                onClick={() => {
+                  setActiveFields(index);
+                  setOpenDialog(true);
+                }}
+              >
+                <X />
+              </div>
               <div>
                 <label className="text-xs">University Name</label>
                 <Input
@@ -88,17 +100,7 @@ function Education() {
                   //defaultValue={item?.universityName}
                 />
               </div>
-              <div className="relative grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg">
-                <div
-                  className="absolute right-1.5  hover:bg-red-300/30 scale-75 rounded-md border border-solid p-1"
-                  onClick={() => {
-                    setActiveFields(index);
-                    setOpenDialog(true);
-                  }}
-                >
-                  <X />
-                </div>
-
+              <div className="grid grid-cols-2 gap-3   my-5 ">
                 <div>
                   <label className="text-xs">Degree</label>
                   <Input
