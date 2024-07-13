@@ -6,6 +6,7 @@ import ResumePreview from "@/components/custom components/ResumePreview";
 import { getResume } from "@/service/strapiCms/serverActions";
 import { useDispatch } from "react-redux";
 import { setResumeData } from "@/redux/features/resume/resumeSlice";
+import { getFormattedData } from "@/lib/utils";
 
 const EditResume = ({ params }: { params: { resumeId: string } }) => {
   const [resumeInfo, setResumeInfo] = useState<any>(null);
@@ -17,30 +18,7 @@ const EditResume = ({ params }: { params: { resumeId: string } }) => {
       const response = await getResume(params.resumeId);
       const data = response.data.attributes;
 
-      const formattedData = {
-        resumeMeta: {
-          title: data.title,
-          resumeId: data.resumeId,
-          userEmail: data.userEmail,
-          createdAt: data.createdAt,
-          updatedAt: data.updatedAt,
-          publishedAt: data.publishedAt,
-        },
-        personalInfo: {
-          lastName: data.lastName,
-          jobTitle: data.jobTitle,
-          userName: data.userName,
-          address: data.address,
-          phone: data.phone,
-          email: data.email,
-          themeColor: data.themeColor,
-          summery: data.summery,
-          firstName: data.firstName,
-        },
-        experiences: data.experience,
-        education: data.education,
-        skill: data.skills,
-      };
+      const formattedData = getFormattedData(data);
 
       // Set the formatted data to state
       setDd(formattedData);

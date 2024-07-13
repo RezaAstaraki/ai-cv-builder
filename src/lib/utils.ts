@@ -66,3 +66,31 @@ export function capitalizeFirstLetterWord(string: string | null) {
     )
     .join("");
 }
+
+export const getFormattedData = (data: any) => {
+  const formattedData = {
+    resumeMeta: {
+      title: data.title,
+      resumeId: data.resumeId,
+      userEmail: data.userEmail,
+      createdAt: data.createdAt,
+      updatedAt: data.updatedAt,
+      publishedAt: data.publishedAt,
+    },
+    personalInfo: {
+      lastName: data.lastName,
+      jobTitle: data.jobTitle,
+      userName: data.userName,
+      address: data.address,
+      phone: data.phone,
+      email: data.email,
+      themeColor: data.themeColor,
+      summery: data.summery,
+      firstName: data.firstName,
+    },
+    experiences: data.experience,
+    education: data.education,
+    skill: data.skills,
+  };
+  return formattedData;
+};
