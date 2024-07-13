@@ -1,4 +1,3 @@
-"use client";
 import { Skill } from "@/redux/features/types";
 import { useAppSelector } from "@/redux/store";
 

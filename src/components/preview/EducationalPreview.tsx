@@ -1,4 +1,3 @@
-"use client";
 import { convertToMonthYear } from "@/lib/utils";
 import { useAppSelector } from "@/redux/store";
 import React from "react";

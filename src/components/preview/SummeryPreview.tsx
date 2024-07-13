@@ -1,5 +1,3 @@
-"use client";
-
 import { useAppSelector } from "@/redux/store";
 
 function SummeryPreview({}) {

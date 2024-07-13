@@ -1,5 +1,3 @@
-"use client";
-
 import { capitalizeFirstLetter, capitalizeFirstLetterWord } from "@/lib/utils";
 import { useAppSelector } from "@/redux/store";
 import { useSelector } from "react-redux";

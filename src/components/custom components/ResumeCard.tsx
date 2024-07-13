@@ -59,6 +59,7 @@ const ResumeCard = ({ resume }: { resume: any }) => {
       setLoading(false);
     }
     setEditTitle(false);
+    inputRef.current?.blur();
   };
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -89,7 +90,6 @@ const ResumeCard = ({ resume }: { resume: any }) => {
               src="/cv.png"
               width={80}
               height={80}
-              // placeholder="blur"
             />
           </div>
         </div>
@@ -119,6 +119,7 @@ const ResumeCard = ({ resume }: { resume: any }) => {
                 } else if (e.key === "Escape") {
                   setTitle(resume.attributes.title);
                   setEditTitle(false);
+                  inputRef.current?.blur();
                 }
               }}
             />
