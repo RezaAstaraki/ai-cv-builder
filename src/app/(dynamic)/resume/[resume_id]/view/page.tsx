@@ -5,6 +5,7 @@ import SkillsPreview from "@/components/preview/SkillsPreview";
 import SummeryPreview from "@/components/preview/SummeryPreview";
 import { getFormattedData } from "@/lib/utils";
 import { get } from "@/service/strapiCms/serverActions";
+import { cookies } from "next/headers";
 
 import React from "react";
 
@@ -13,6 +14,7 @@ const ResumeViewPage = async ({
 }: {
   params: { resume_id: string };
 }) => {
+  cookies();
   const response = await get(`user-resumes/${params.resume_id}?populate=*`);
   const data = response.data.attributes;
 
