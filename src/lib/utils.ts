@@ -24,6 +24,10 @@ export function convertToDateString(dateStr: string): string {
 export function convertToMonthYear(dateStr: string): string {
   const date = new Date(dateStr);
 
+  if (!dateStr) {
+    return "Present";
+  }
+
   if (isNaN(date.getTime())) {
     return dateStr;
   }

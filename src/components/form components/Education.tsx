@@ -136,6 +136,7 @@ function Education() {
                 <div>
                   <label className="text-xs">Start Date</label>
                   <Input
+                    required
                     type="date"
                     name="startDate"
                     onChange={(event) => {
