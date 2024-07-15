@@ -7,7 +7,10 @@ import { getFormattedData } from "@/lib/utils";
 import { get } from "@/service/strapiCms/serverActions";
 import { cookies } from "next/headers";
 
+import "./loading.scss";
+
 import React from "react";
+import BoxSpinner from "@/components/custom components/loadings/BoxSpinner";
 
 const ResumeViewPage = async ({
   params,
@@ -23,7 +26,7 @@ const ResumeViewPage = async ({
   const themeColor = resume.personalInfo.themeColor;
   return (
     <div
-      className="shadow-lg h-full p-14 border-t-[20px]"
+      className="shadow-lg h-full p-14 border-t-[20px] mm "
       style={{ borderColor: themeColor }}
     >
       {/* Personal Detail  */}
