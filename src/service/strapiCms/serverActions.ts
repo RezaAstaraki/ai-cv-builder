@@ -3,9 +3,10 @@
 import { revalidateTag } from "next/cache";
 
 const API_KEY = process.env.NEXT_STAPI_API_KEY;
+const baseUrl = process.env.NEXT_PUBLIC_STAPI_BASE_URL;
 
 // const baseUrl = "http://localhost:1337/api/";
-const baseUrl = "https://strapi-base-7f9g.onrender.com/api/";
+// const baseUrl = "https://strapi-base-7f9g.onrender.com/api/";
 
 const post = async (endpoint: string, body: string) => {
   try {
