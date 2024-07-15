@@ -14,6 +14,7 @@ const ResumeViewPage = async ({
 }: {
   params: { resume_id: string };
 }) => {
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
   cookies();
   const response = await get(`user-resumes/${params.resume_id}?populate=*`);
   const data = response.data.attributes;

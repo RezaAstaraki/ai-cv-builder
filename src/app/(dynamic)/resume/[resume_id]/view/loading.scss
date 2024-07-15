@@ -1,0 +1,88 @@
+$clr: #25253b;
+$green: #0cd827;
+$blue: #0cb9d8;
+.main {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  background: $clr;
+  display: flex;
+  flex: 1 1 0%;
+  .body {
+    display: flex;
+    flex-grow: 1;
+
+    max-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    .box-container {
+      position: relative;
+      transform: rotate(-35deg);
+      // width: 2000px;
+      // height: 2000px;
+
+      .box-container {
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        -webkit-box-reflect: below 1px
+          linear-gradient(180deg, transparent, $clr);
+
+        .box {
+          position: relative;
+          width: 100px;
+          height: 100px;
+          background: $green;
+          box-shadow: 0 0 10px $green, 0 0 15px $green, 0 0 30px $green,
+            0 0 50px $green, 0 0 150px $green;
+          transform-origin: bottom right;
+          animation: roll 1.5s infinite;
+        }
+      }
+    }
+
+    .move-scene {
+      // animation: move 1.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes move {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(-100px);
+    }
+  }
+
+  @keyframes roll {
+    0% {
+      transform: rotate(0deg);
+    }
+    70% {
+      transform: rotate(90deg);
+    }
+    75% {
+      transform: rotate(80deg);
+    }
+    80% {
+      transform: rotate(90deg);
+    }
+    85% {
+      transform: rotate(85deg);
+    }
+    90% {
+      transform: rotate(90deg);
+    }
+    95% {
+      transform: rotate(87.5deg);
+    }
+    100% {
+      transform: rotate(90deg);
+    }
+  }
+}

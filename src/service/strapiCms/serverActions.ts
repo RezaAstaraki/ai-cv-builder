@@ -57,6 +57,7 @@ const put = async (endpoint: string, body: string) => {
 };
 
 export const get = async (endpoint: string) => {
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
   try {
     const res = await fetch(`${baseUrl}${endpoint}`, {
       method: "GET",
