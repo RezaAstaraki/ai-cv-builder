@@ -34,7 +34,7 @@ const EditResume = ({ params }: { params: { resumeId: string } }) => {
   }, [dd, dispatch]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 p-10 gap-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 p-5 md:p-14 gap-10">
       {resumeInfo && (
         <>
           <FormSection />

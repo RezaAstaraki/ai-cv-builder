@@ -26,7 +26,7 @@ const ResumeViewPage = async ({
   const themeColor = resume.personalInfo.themeColor;
   return (
     <div
-      className="shadow-lg h-full p-14 border-t-[20px] mm "
+      className="shadow-lg h-full p-5 md:p-14 border-t-[20px] mm "
       style={{ borderColor: themeColor }}
     >
       {/* Personal Detail  */}

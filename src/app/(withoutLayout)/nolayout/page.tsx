@@ -1,7 +1,7 @@
 import React from "react";
 
 const Page = () => {
-  return <div>no layout</div>;
+  return <div className="p-5 md:p-14">no layout</div>;
 };
 
 export default Page;

@@ -9,7 +9,7 @@ function PersonalDetailPreview({
   return (
     <div>
       <h2
-        className="font-bold text-xl text-center"
+        className=" font-bold text-xl text-center"
         style={{
           color: personalInfo?.themeColor,
         }}
@@ -29,7 +29,7 @@ function PersonalDetailPreview({
         {personalInfo?.address}
       </h2>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between flex-wrap">
         <h2
           className="font-normal text-xs"
           style={{
