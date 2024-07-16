@@ -32,7 +32,7 @@ const ResumeViewPage = async ({
 
   return (
     <div>
-      <div className="flex flex-row justify-around p-5">
+      <div className="flex flex-row justify-around p-5" id="no-print">
         {" "}
         <ShareComponent
           shareData={{
@@ -42,7 +42,9 @@ const ResumeViewPage = async ({
         />
         <Button>Download</Button>
       </div>
+
       <div
+        id="printAria"
         className="shadow-lg h-full p-5 md:p-14 border-t-[20px] mm "
         style={{ borderColor: themeColor }}
       >

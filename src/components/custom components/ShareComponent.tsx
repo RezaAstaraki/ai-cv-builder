@@ -1,6 +1,7 @@
 "use client";
+import ReactDOMServer from "react-dom/server";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RWebShare } from "react-web-share";
 import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
@@ -14,6 +15,7 @@ const ShareComponent = ({ shareData }: { shareData: ShareData }) => {
   const pathName = usePathname();
   const baseUrl = process.env.NEXT_PUBLIC_HOST_BASE_URL;
   const url = `${baseUrl}${pathName.slice(1)}`;
+
   return (
     <div>
       <RWebShare

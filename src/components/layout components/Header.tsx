@@ -7,7 +7,10 @@ import { Button } from "@/components/ui/button";
 const Header = async () => {
   const user = await currentUser();
   return (
-    <header className="flex justify-between items-center shadow-md  px-5 p-3">
+    <header
+      className="flex justify-between items-center shadow-md  px-5 p-3"
+      id="no-print"
+    >
       <Link href={"/"}>
         <Image
           className="flex justify-center items-center"

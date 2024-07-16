@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@media print {
+  #no-print {
+    display: none;
+  }
+  #printAria {
+    display: block;
+    padding: 65px;
+    box-shadow: none;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+}
+@page {
+  size: auto;
+  margin: 0mm;
+}
+
 .rsw-ce ul {
   list-style: disc;
   padding-left: 2em;
