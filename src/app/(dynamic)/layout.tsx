@@ -25,14 +25,16 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased flex flex-col",
+          "min-h-screen bg-background font-sans antialiased flex flex-col flex-1 ",
           fontSans.variable
         )}
       >
         <NextProvider>
           <ClerkProvider>
             <Header />
-            {children}
+            <div className="max-w-screen-2xl flex flex-col flex-1">
+              {children}
+            </div>
           </ClerkProvider>
         </NextProvider>
       </body>

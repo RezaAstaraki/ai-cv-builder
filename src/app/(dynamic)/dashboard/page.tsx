@@ -23,7 +23,7 @@ const ResumeCards = async () => {
 
 const DashboardPage = async () => {
   return (
-    <div className="p-5 md:p-14 md:px-20 lg:px-32">
+    <div className="p-5 md:p-14 md:px-20 lg:px-32 ">
       <h2 className="font-bold text-3xl pb-5">My Resume</h2>
       <p>Start Creating AI resume to your next Job role</p>
       <div className="mt-5 grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">

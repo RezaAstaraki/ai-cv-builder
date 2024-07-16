@@ -23,7 +23,7 @@ export default function StaticRootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased flex flex-col",
+          "min-h-screen bg-background font-sans antialiased flex flex-col max-w-screen-xl",
           fontSans.variable
         )}
       >

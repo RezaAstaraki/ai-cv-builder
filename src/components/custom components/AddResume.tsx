@@ -41,7 +41,7 @@ const AddResume = () => {
   };
 
   return (
-    <div>
+    <div className="min-w-[190px] max-w-[300px]">
       <div
         className="p-14 py-24 flex justify-center items-center border bg-secondary rounded-lg h-[280px] hover:scale-105 transition-all hover:shadow-md cursor-pointe border-dashed"
         onClick={() => setOpenDialog(true)}

@@ -65,7 +65,7 @@ const ResumeCard = ({ resume }: { resume: any }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div>
+    <div className="min-w-[190px] max-w-[300px]">
       <Link
         href={{
           pathname: `/dashboard/resume/${resume.id}/edit`,

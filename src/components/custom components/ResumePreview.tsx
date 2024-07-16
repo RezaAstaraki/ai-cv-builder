@@ -17,7 +17,7 @@ const ResumePreview = () => {
 
   return (
     <div
-      className="shadow-lg h-full p-14 border-t-[20px]"
+      className="shadow-lg h-full p-4 md:p-6 border-t-[20px] min-w-[350px]"
       style={{ borderColor: themeColor }}
     >
       {/* Personal Detail  */}
