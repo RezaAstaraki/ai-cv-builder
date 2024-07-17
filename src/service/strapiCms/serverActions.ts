@@ -191,31 +191,31 @@ export const getUserResumes = async (userEmail?: string) => {
 // };
 
 // pages/api/openai.js
-import OpenAI from "openai";
+// import OpenAI from "openai";
 
-const openai = new OpenAI();
+// const openai = new OpenAI();
 
-export const getAiResponse = async () => {
-  try {
-    const completion = await openai.chat.completions.create({
-      messages: [{ role: "system", content: "You are a helpful assistant." }],
-      model: "gpt-3.5-turbo",
-    });
-    console.log(completion.choices[0]);
-    return completion.choices[0];
-  } catch (e: any) {
-    // console.log(
-    //   "***************",
-    //   "\n",
-    //   "\n",
-    //   "e=",
-    //   e,
-    //   "\n",
-    //   "******************"
-    // );
-    return e.error;
-  }
-};
+// export const getAiResponse = async () => {
+//   try {
+//     const completion = await openai.chat.completions.create({
+//       messages: [{ role: "system", content: "You are a helpful assistant." }],
+//       model: "gpt-3.5-turbo",
+//     });
+//     console.log(completion.choices[0]);
+//     return completion.choices[0];
+//   } catch (e: any) {
+//     // console.log(
+//     //   "***************",
+//     //   "\n",
+//     //   "\n",
+//     //   "e=",
+//     //   e,
+//     //   "\n",
+//     //   "******************"
+//     // );
+//     return e.error;
+//   }
+// };
 
 // #########################################################
 
