@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidateTag } from "next/cache";
+import Anthropic from "@anthropic-ai/sdk";
 
 const API_KEY = process.env.NEXT_STAPI_API_KEY;
 const baseUrl = process.env.NEXT_PUBLIC_STAPI_BASE_URL;
@@ -162,4 +163,96 @@ export const getUserResumes = async (userEmail?: string) => {
     console.error("Error fetching user resumes:", error);
     throw error;
   }
+};
+
+// const anthropic = new Anthropic();
+
+// export const getAiResponse = async () => {
+//   const msg = await anthropic.messages.create({
+//     model: "claude-3-5-sonnet-20240620",
+//     max_tokens: 1000,
+//     temperature: 0,
+//     system: "Respond only with short poems.",
+
+//     messages: [
+//       {
+//         role: "user",
+//         content: [
+//           {
+//             type: "text",
+//             text: "Why is the ocean salty?",
+//           },
+//         ],
+//       },
+//     ],
+//   });
+//   console.log(msg);
+//   return msg;
+// };
+
+// pages/api/openai.js
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+export const getAiResponse = async () => {
+  try {
+    const completion = await openai.chat.completions.create({
+      messages: [{ role: "system", content: "You are a helpful assistant." }],
+      model: "gpt-3.5-turbo",
+    });
+    console.log(completion.choices[0]);
+    return completion.choices[0];
+  } catch (e: any) {
+    // console.log(
+    //   "***************",
+    //   "\n",
+    //   "\n",
+    //   "e=",
+    //   e,
+    //   "\n",
+    //   "******************"
+    // );
+    return e.error;
+  }
+};
+
+// #########################################################
+
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+const apiKey = process.env.GOOGLE_AI_API_KEY;
+const genAI = new GoogleGenerativeAI(apiKey || "no api key");
+const model = genAI.getGenerativeModel({
+  model: "gemini-1.5-flash",
+});
+
+const generationConfig = {
+  temperature: 1,
+  topP: 0.95,
+  topK: 64,
+  maxOutputTokens: 8192,
+  responseMimeType: "application/json",
+};
+
+const AIChatSession = model.startChat({
+  generationConfig,
+  // safetySettings: Adjust safety settings
+  // See https://ai.google.dev/gemini-api/docs/safety-settings
+  history: [],
+});
+
+export const generateSummeryFromAI = async (prompt: string) => {
+  const PROMPT = "";
+  // console.log(PROMPT);
+  // const result = await AIChatSession.sendMessage(PROMPT);
+  const result = await model.generateContent(prompt);
+  console.log("***************\n\n\n\n\n*********************");
+  console.log(result);
+  console.log("***************\n\n\n\n\n*********************");
+
+  console.log(result.response.text());
+  console.log("***************\n\n\n\n\n*********************");
+
+  return result.response.text();
 };

@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 
 import { ArrowLeft, ArrowRight, Home } from "lucide-react";
 import Link from "next/link";
@@ -27,6 +27,9 @@ const FormSection = () => {
 
   const state = useAppSelector((state) => state.resume);
 
+  const nextBtn = useRef<HTMLButtonElement>(null);
+  const previousBtn = useRef<HTMLButtonElement>(null);
+
   useLayoutEffect(() => {
     if (formIndex === 5) {
       router.push(`/resume/${resumeId}/view`);
@@ -53,6 +56,7 @@ const FormSection = () => {
           <div className="flex gap-2">
             {formIndex > 0 && (
               <Button
+                ref={previousBtn}
                 size="sm"
                 onClick={() => setFormIndex((prev) => prev - 1)}
               >
@@ -61,6 +65,7 @@ const FormSection = () => {
             )}
             {/* } */}
             <Button
+              ref={nextBtn}
               // disabled={!enableNext}
               className="flex gap-2"
               size="sm"
@@ -75,7 +80,12 @@ const FormSection = () => {
           </div>
         </div>
         {formIndex === 0 && <PersonalDetail />}
-        {formIndex === 1 && <Summery />}
+        {formIndex === 1 && (
+          <Summery
+            // nextBtn={nextBtn?.current}
+            previousBtn={previousBtn}
+          />
+        )}
         {formIndex === 2 && <Experience />}
         {formIndex === 3 && <Education />}
         {formIndex === 4 && <Skills />}

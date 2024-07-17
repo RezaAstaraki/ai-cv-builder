@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 import NextProvider from "@/redux/NextProvider";
 import Header from "@/components/layout components/Header";
+import { Toaster } from "sonner";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
             </div>
           </ClerkProvider>
         </NextProvider>
+        <Toaster position="top-right" />
       </body>
     </html>
   );

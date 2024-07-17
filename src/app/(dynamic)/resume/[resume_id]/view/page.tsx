@@ -12,6 +12,8 @@ import "./loading.scss";
 import React from "react";
 import ShareComponent from "@/components/custom components/ShareComponent";
 import { Button } from "@/components/ui/button";
+import Unige from "@/components/pdf/Unige";
+import { PDFViewer } from "@react-pdf/renderer";
 
 const ResumeViewPage = async ({
   params,
@@ -42,6 +44,9 @@ const ResumeViewPage = async ({
         />
         <Button>Download</Button>
       </div>
+
+      {/* <Unige /> */}
+      {/* <PDFViewer /> */}
 
       <div
         id="printAria"
